@@ -3,6 +3,8 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
+const studentList = document.querySelector("student-list");
+
 
 
 /*
@@ -18,6 +20,10 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
+const showPage = () => {
+   console.log(renderTemplate.student());
+}
+
 
 
 /*
@@ -26,5 +32,9 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 
-
-// Call functions
+/**
+ * Run rendering functions after DOM has loaded
+ */
+window.addEventListener("DOMContentLoaded", () => {
+   showPage();
+});

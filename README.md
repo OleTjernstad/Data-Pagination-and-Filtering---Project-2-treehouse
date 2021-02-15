@@ -2,7 +2,7 @@
 
 ## Project steps
 
-- [] Display a “page”
+- [ ] Display a “page”
   - Create a function that will show a “page” of nine students.
     This function should have two parameters:
     A list parameter to represent student data that will be passed as an argument when the function is called.

@@ -21,7 +21,7 @@ This function will create and insert/append the elements needed to display a "pa
 */
 
 const showPage = () => {
-   console.log(renderTemplate.student());
+   console.log(studentBlock());
 }
 
 

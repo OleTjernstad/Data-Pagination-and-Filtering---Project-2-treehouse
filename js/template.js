@@ -2,23 +2,20 @@
 /**
  * Function for rendering element blocks
  */
-const studentBlock = () => {
+const studentBlock = (student) => {
 
-    const studentDetails = wrapper('div', "student-details", [
-        createElement(
-            'h3', 
-            [
-                {name: 'textContent', value: 'student name'}
-            ]
-        ),
-        createElement(
-            'span', 
-            [
-                {name: 'className', value: 'email'}, 
-                {name: 'textContent', value: 'Student email'}
-            ]
-        ),
-        avatar()
+    const studentDetails = wrapper("div", "student-details", [
+      createElement("h3", [
+        {
+          name: "textContent",
+          value: `${student.name.first} ${student.name.last}`,
+        },
+      ]),
+      createElement("span", [
+        { name: "className", value: "email" },
+        { name: "textContent", value: student.email },
+      ]),
+      avatar(student.picture.medium),
     ]);
 
     const joinedDetails = wrapper('div', "joined-details", [
@@ -26,7 +23,7 @@ const studentBlock = () => {
             'span', 
             [
                 {name: 'className', value: 'date'}, 
-                {name: 'textContent', value: 'student date'}
+                {name: 'textContent', value: `Joined ${student.registered.date}`}
             ]
         ),
 

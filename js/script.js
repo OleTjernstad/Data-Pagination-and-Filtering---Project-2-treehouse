@@ -15,7 +15,10 @@ const showPage = () => {
    studentList.innerHTML = "";
    console.log(studentList);
 
-   studentList.appendChild(studentBlock());
+   for (let i = 0; i < data.length; i++) {
+       studentList.appendChild(studentBlock(data[i]));
+      
+   }
 }
 
 

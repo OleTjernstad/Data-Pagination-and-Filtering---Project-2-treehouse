@@ -43,6 +43,14 @@ const paginationBlock = (number, page) => {
     ]);
 }
 
+const searchBarBlock = () => {
+    return wrapper('label')
+        //       <label for="search" class="student-search">
+        //     <input id="search" placeholder="Search by name...">
+        //     <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+        //   </label>
+}
+
 /**
  * Setting up the avatar element
  * 
@@ -64,10 +72,10 @@ const avatar = (src) => {
  * 
  * @returns {HTMLElement}
  */
-const createElement =  (elementName, prop = []) => {
+const createElement =  (elementName, props = []) => {
     const element = document.createElement(elementName);
-    for (let i = 0; i < prop.length; i++) {
-       element[prop[i].name] = prop[i].value        
+    for (let i = 0; i < props.length; i++) {
+       element[props[i].name] = props[i].value        
     }
     return element
 }
@@ -77,9 +85,10 @@ const createElement =  (elementName, prop = []) => {
  * @param {string} className The CSS class name 
  * @param {HTMLElement[]} children An array with children HTML elements
  */
-const wrapper = (elementName, className, children = []) => {
+const wrapper = (elementName, className, children = [], props = []) => {
     const element = createElement(elementName, [
       { name: "className", value: className },
+      ...props
     ]);
     for (let i = 0; i < children.length; i++) {
         element.appendChild(children[i]);

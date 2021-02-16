@@ -21,13 +21,25 @@ const calculateStudentChunk = (page) => {
 const addPagination = (page) => {
     const numberOfPages = Math.ceil(data.length / itemsPerPage);
 
-    const linkList = document.querySelector(".link-list");
     linkList.innerHTML = '';
     
     for (let i = 1; i <= numberOfPages; i++) {
       linkList.appendChild(paginationBlock(i, page));
     }
 }
+
+/**
+ * Event listener for pagination buttons
+ */
+const linkList = document.querySelector(".link-list");
+linkList.addEventListener("click", (event) => {
+    
+    if (event.target.tagName == 'BUTTON') {
+        const page = event.target.textContent;
+        showPage(calculateStudentChunk(page)); //start on page one when the page loads
+        addPagination(page);   
+    }
+});
 
 
 /**

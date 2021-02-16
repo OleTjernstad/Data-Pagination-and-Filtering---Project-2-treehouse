@@ -1,6 +1,7 @@
 
 /**
- * Function for rendering element blocks
+ * Build student HTML block
+ * @param {student object} student Student object from data array
  */
 const studentBlock = (student) => {
 
@@ -18,20 +19,16 @@ const studentBlock = (student) => {
       avatar(student.picture.medium),
     ]);
 
-    const joinedDetails = wrapper('div', "joined-details", [
-        createElement(
-            'span', 
-            [
-                {name: 'className', value: 'date'}, 
-                {name: 'textContent', value: `Joined ${student.registered.date}`}
-            ]
-        ),
-
-    ])
-    const block = wrapper('li',"student-item cf", [
-        studentDetails,
-        joinedDetails
-    ] );
+    const joinedDetails = wrapper("div", "joined-details", [
+      createElement("span", [
+        { name: "className", value: "date" },
+        { name: "textContent", value: `Joined ${student.registered.date}` },
+      ]),
+    ]);
+    const block = wrapper("li", "student-item cf", [
+      studentDetails,
+      joinedDetails,
+    ]);
     
     return block;
 }
@@ -44,14 +41,11 @@ const studentBlock = (student) => {
  * @returns {HTMLElement} The img element
  */
 const avatar = (src) => {
-    return createElement(
-        'img', 
-        [
-            {name: 'className', value: 'avatar'},
-            {name: 'alt', value: "Profile Picture"},
-            {name: 'src', value: src}
-        ]
-    );  
+    return createElement("img", [
+      { name: "className", value: "avatar" },
+      { name: "alt", value: "Profile Picture" },
+      { name: "src", value: src },
+    ]);  
 }
 /**
  * Creating the DOM element with different props
@@ -74,7 +68,9 @@ const createElement =  (elementName, prop = []) => {
  * @param {HTMLElement[]} children An array with children HTML elements
  */
 const wrapper = (elementName, className, children = []) => {
-    const element = createElement(elementName, [{name: 'className', value: className}]);
+    const element = createElement(elementName, [
+      { name: "className", value: className },
+    ]);
     for (let i = 0; i < children.length; i++) {
         element.appendChild(children[i]);
     }

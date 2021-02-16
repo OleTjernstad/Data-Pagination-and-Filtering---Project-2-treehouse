@@ -33,6 +33,16 @@ const studentBlock = (student) => {
     return block;
 }
 
+const paginationBlock = (number, page) => {
+    return wrapper("li", "", [
+      createElement("button", [
+        { name: "textContent", value: number },
+        { name: "type", value: "button" },
+        { name: "className", value: number == page ? "active" : "" },
+      ]),
+    ]);
+}
+
 /**
  * Setting up the avatar element
  * 

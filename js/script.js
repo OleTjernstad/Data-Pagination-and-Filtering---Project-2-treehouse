@@ -3,22 +3,25 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-const studentList = document.querySelector(".student-list");
-
 
 /*
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
-const showPage = () => {
-   studentList.innerHTML = "";
-   console.log(studentList);
+const showPage = (students) => {
+    const studentList = document.querySelector(".student-list");
+    studentList.innerHTML = "";
+    for (let i = 0; i < students.length; i++) {
+        studentList.appendChild(studentBlock(students[i]));
+    }
+}
 
-   for (let i = 0; i < data.length; i++) {
-       studentList.appendChild(studentBlock(data[i]));
-      
-   }
+const calculateStudentChunk = (page) => {
+    const itemsPerPage = 9
+    const start = (page * itemsPerPage) - itemsPerPage;
+    const end = page * itemsPerPage;
+    return data.slice(start, end);
 }
 
 
@@ -33,5 +36,5 @@ This function will create and insert/append the elements needed for the paginati
  * Run rendering functions after DOM has loaded
  */
 window.addEventListener("DOMContentLoaded", () => {
-   showPage();
+   showPage(calculateStudentChunk(1));
 });

@@ -44,7 +44,7 @@ const studentBlock = () => {
  * 
  * @param {string} src URL to the profile picture 
  * 
- * @returns {DOMElement} The img element
+ * @returns {HTMLElement} The img element
  */
 const avatar = (src) => {
     return createElement(
@@ -61,7 +61,7 @@ const avatar = (src) => {
  * @param {string} elementName The HTML element name
  * @param {array} prop prop object {name: property name, value: property value}
  * 
- * @returns {DOMElement}
+ * @returns {HTMLElement}
  */
 const createElement =  (elementName, prop = []) => {
     const element = document.createElement(elementName);
@@ -74,7 +74,7 @@ const createElement =  (elementName, prop = []) => {
  * Creating the parent element, with classes
  * @param {string} elementName The HTML element name
  * @param {string} className The CSS class name 
- * @param {array} children An array with children DOM elements
+ * @param {HTMLElement[]} children An array with children HTML elements
  */
 const wrapper = (elementName, className, children = []) => {
     const element = createElement(elementName, [{name: 'className', value: className}]);

@@ -22,6 +22,8 @@ const addPagination = (page) => {
     const numberOfPages = Math.ceil(data.length / itemsPerPage);
 
     const linkList = document.querySelector(".link-list");
+    linkList.innerHTML = '';
+    
     for (let i = 1; i <= numberOfPages; i++) {
       linkList.appendChild(paginationBlock(i, page));
     }
@@ -32,6 +34,6 @@ const addPagination = (page) => {
  * Run rendering functions after DOM has loaded
  */
 window.addEventListener("DOMContentLoaded", () => {
-   showPage(calculateStudentChunk(1));
+   showPage(calculateStudentChunk(1)); //start on page one when the page loads
    addPagination(1);
 });

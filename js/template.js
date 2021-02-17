@@ -9,7 +9,11 @@
 const studentBlock = (student) => {
 
     const studentDetails = wrapper("div", { className: "student-details" }, [
-        avatar(student.picture.medium),
+        createElement("img", {
+            className: "avatar",
+            alt: "Profile Picture",
+            src: student.picture.medium,
+        }),
         createElement("h3", {
             textContent: `${student.name.first} ${student.name.last}`,
         }),
@@ -68,21 +72,6 @@ const searchBarBlock = () => {
         searchField,
         searchButton,
     ]);
-}
-
-/**
- * Setting up the avatar element
- * 
- * @param {string} src URL to the profile picture 
- * 
- * @returns {HTMLElement} The img element
- */
-const avatar = (src) => {
-    return createElement("img", {
-      className: "avatar",
-      alt: "Profile Picture",
-      src: src,
-    });  
 }
 
 /**

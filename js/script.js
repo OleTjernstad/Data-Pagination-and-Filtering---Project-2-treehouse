@@ -29,9 +29,12 @@ const addPagination = (page) => {
 }
 
 /**
- * Event listener for pagination buttons
+ * Get the link list
  */
 const linkList = document.querySelector(".link-list");
+/**
+ * Event listener for pagination buttons
+ */
 linkList.addEventListener("click", (event) => {
     
     if (event.target.tagName == 'BUTTON') {
@@ -41,6 +44,11 @@ linkList.addEventListener("click", (event) => {
     }
 });
 
+/**
+ * Get the header element
+ */
+const header = document.querySelector(".header")
+
 
 /**
  * Run rendering functions after DOM has loaded
@@ -49,7 +57,6 @@ window.addEventListener("DOMContentLoaded", () => {
    showPage(calculateStudentChunk(1)); //start on page one when the page loads
    addPagination(1);
 
-   document
-     .querySelector(".header")
-     .appendChild(searchBarBlock());
+   
+    header.appendChild(searchBarBlock());
 });

@@ -48,8 +48,10 @@ const calculateStudentChunk = (page) => {
 }
 
 const search = (searchString) => {
-    students = data.filter((student) =>
-      student.name.first.toLowerCase().includes(searchString.toLowerCase())
+    students = data.filter(
+        (student) =>
+            student.name.first.toLowerCase().includes(searchString.toLowerCase() ) || 
+            student.name.last.toLowerCase().includes(searchString.toLowerCase() )
     ); // filter the array for matching students
 
     showPage(1); // start on page one when the page loads  

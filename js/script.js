@@ -83,11 +83,17 @@ header.addEventListener('click', (event) => {
     if (event.target.tagName == 'IMG') {
         search(event.target.parentNode.previousElementSibling.value);
     } else if (event.target.tagName == "BUTTON") {
-      // if somehow the button element is clicked and not the IMG
-      search(event.target.previousElementSibling.value);
+        // if somehow the button element is clicked and not the IMG
+        search(event.target.previousElementSibling.value);
     }
     
-} )
+} );
+
+header.addEventListener('keyup', (event) => {
+    if (event.target.tagName == "INPUT") {
+      search(event.target.value);
+    }
+});
 
 /**
  * Run rendering functions after DOM has loaded

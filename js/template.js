@@ -1,7 +1,10 @@
 
 /**
  * Build student HTML block
+ * 
  * @param {student object} student Student object from data array
+ * 
+ * @returns {HTMLElement} The student details item
  */
 const studentBlock = (student) => {
 
@@ -33,6 +36,14 @@ const studentBlock = (student) => {
     return block;
 }
 
+/**
+ * Create the HTML for the pagination buttons
+ * 
+ * @param {number} number number to print in button
+ * @param {number} page The current page number to set active
+ * 
+ * @returns {HTMLElement} The pagination li
+ */
 const paginationBlock = (number, page) => {
     return wrapper("li", "", [
       createElement("button", [
@@ -43,12 +54,44 @@ const paginationBlock = (number, page) => {
     ]);
 }
 
+/**
+ * Create the HTML for th searchBar
+ * 
+ * @returns {HTMLElement} The searchbar block
+ */
 const searchBarBlock = () => {
-    return wrapper('label')
-        //       <label for="search" class="student-search">
-        //     <input id="search" placeholder="Search by name...">
-        //     <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
-        //   </label>
+    const seachButton = wrapper(
+        'button',
+        '',
+        [
+            createElement(
+                'img', 
+                [
+                    {name: 'src', value: "img/icn-search.svg"}, 
+                    {name: 'alt', value: 'Search icon'}
+                ]
+            )
+        ],
+        [ { name: 'type', value: 'button' } ]
+    );
+    const searchField = createElement(
+        'input', 
+        [
+            {name: 'id', value: 'search'}, 
+            {name: 'placeholder', value: 'Search by name...'}
+        ]
+    );
+    return wrapper(
+        "label", 
+        'student-search', 
+        [
+            searchField,
+            seachButton
+        ],
+        [
+            {name: 'for', value: 'search'}
+        ]
+    );
 }
 
 /**
@@ -65,6 +108,7 @@ const avatar = (src) => {
       { name: "src", value: src },
     ]);  
 }
+
 /**
  * Creating the DOM element with different props
  * @param {string} elementName The HTML element name
@@ -79,6 +123,7 @@ const createElement =  (elementName, props = []) => {
     }
     return element
 }
+
 /**
  * Creating the parent element, with classes
  * @param {string} elementName The HTML element name

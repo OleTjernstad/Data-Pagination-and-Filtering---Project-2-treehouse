@@ -8,29 +8,26 @@
  */
 const studentBlock = (student) => {
 
-    const studentDetails = wrapper("div", "student-details", [
-      createElement("h3", [
-        {
-          name: "textContent",
-          value: `${student.name.first} ${student.name.last}`,
-        },
-      ]),
-      createElement("span", [
-        { name: "className", value: "email" },
-        { name: "textContent", value: student.email },
-      ]),
-      avatar(student.picture.medium),
+    const studentDetails = wrapper("div", { className: "student-details" }, [
+        avatar(student.picture.medium),
+        createElement("h3", {
+            textContent: `${student.name.first} ${student.name.last}`,
+        }),
+        createElement("span", {
+            className: "email",
+            textContent: student.email,
+        }),
     ]);
 
-    const joinedDetails = wrapper("div", "joined-details", [
-      createElement("span", [
-        { name: "className", value: "date" },
-        { name: "textContent", value: `Joined ${student.registered.date}` },
-      ]),
+    const joinedDetails = wrapper("div", { className: "joined-details" }, [
+        createElement("span", {
+            className: "date",
+            textContent: `Joined ${student.registered.date}`,
+        }),
     ]);
-    const block = wrapper("li", "student-item cf", [
-      studentDetails,
-      joinedDetails,
+    const block = wrapper("li", { className: "student-item cf" }, [
+        studentDetails,
+        joinedDetails,
     ]);
     
     return block;
@@ -45,12 +42,12 @@ const studentBlock = (student) => {
  * @returns {HTMLElement} The pagination li
  */
 const paginationBlock = (number, page) => {
-    return wrapper("li", "", [
-      createElement("button", [
-        { name: "textContent", value: number },
-        { name: "type", value: "button" },
-        { name: "className", value: number == page ? "active" : "" },
-      ]),
+    return wrapper("li", undefined, [
+        createElement("button", {
+            textContent: number,
+            type: "button",
+            className: number == page ? "active" : "",
+        }),
     ]);
 }
 
@@ -60,38 +57,17 @@ const paginationBlock = (number, page) => {
  * @returns {HTMLElement} The searchbar block
  */
 const searchBarBlock = () => {
-    const seachButton = wrapper(
-        'button',
-        '',
-        [
-            createElement(
-                'img', 
-                [
-                    {name: 'src', value: "img/icn-search.svg"}, 
-                    {name: 'alt', value: 'Search icon'}
-                ]
-            )
-        ],
-        [ { name: 'type', value: 'button' } ]
-    );
-    const searchField = createElement(
-        'input', 
-        [
-            {name: 'id', value: 'search'}, 
-            {name: 'placeholder', value: 'Search by name...'}
-        ]
-    );
-    return wrapper(
-        "label", 
-        'student-search', 
-        [
-            searchField,
-            seachButton
-        ],
-        [
-            {name: 'for', value: 'search'}
-        ]
-    );
+    const searchButton = wrapper("button", { type: "button" }, [
+        createElement("img", { src: "img/icn-search.svg", alt: "Search icon" }),
+    ]);
+    const searchField = createElement("input", {
+        id: "search",
+        placeholder: "Search by name...",
+    });
+    return wrapper("label", { className: "student-search", for: "search" }, [
+        searchField,
+        searchButton,
+    ]);
 }
 
 /**
@@ -102,11 +78,11 @@ const searchBarBlock = () => {
  * @returns {HTMLElement} The img element
  */
 const avatar = (src) => {
-    return createElement("img", [
-      { name: "className", value: "avatar" },
-      { name: "alt", value: "Profile Picture" },
-      { name: "src", value: src },
-    ]);  
+    return createElement("img", {
+      className: "avatar",
+      alt: "Profile Picture",
+      src: src,
+    });  
 }
 
 /**
@@ -119,9 +95,8 @@ const avatar = (src) => {
 const createElement =  (elementName, props = []) => {
     const element = document.createElement(elementName);
 
-    // TODO Switch to object using object
     for (const [key, value] of Object.entries(props)) {
-      element[key] = value  
+        element[key] = value;
     }
 
     return element
@@ -133,13 +108,12 @@ const createElement =  (elementName, props = []) => {
  * @param {string} className The CSS class name 
  * @param {HTMLElement[]} children An array with children HTML elements
  */
-const wrapper = (elementName, className, children = [], props = []) => {
-    const element = createElement(elementName, [
-      { name: "className", value: className },
-      ...props
-    ]);
+const wrapper = (elementName, props, children = []) => {
+    const element = createElement(elementName, props );
+
     for (let i = 0; i < children.length; i++) {
         element.appendChild(children[i]);
     }
+
     return element;
-}
+};

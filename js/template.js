@@ -118,9 +118,12 @@ const avatar = (src) => {
  */
 const createElement =  (elementName, props = []) => {
     const element = document.createElement(elementName);
-    for (let i = 0; i < props.length; i++) {
-       element[props[i].name] = props[i].value        
+
+    // TODO Switch to object using object
+    for (const [key, value] of Object.entries(props)) {
+      element[key] = value  
     }
+
     return element
 }
 

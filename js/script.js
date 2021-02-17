@@ -48,4 +48,8 @@ linkList.addEventListener("click", (event) => {
 window.addEventListener("DOMContentLoaded", () => {
    showPage(calculateStudentChunk(1)); //start on page one when the page loads
    addPagination(1);
+
+   document
+     .querySelector(".header")
+     .appendChild(searchBarBlock());
 });

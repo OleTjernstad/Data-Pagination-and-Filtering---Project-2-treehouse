@@ -41,12 +41,24 @@ const addPagination = (page) => {
   }
 };
 
+/**
+ * Slice the array of students to the current paginated page
+ * 
+ * @param {number} page current page number
+ * 
+ * @returns {students[]} array of student objects
+ */
 const calculateStudentChunk = (page) => {
     const start = (page * itemsPerPage) - itemsPerPage;
     const end = page * itemsPerPage;
     return students.slice(start, end);
 }
 
+/**
+ * filter the student array, and set the students variable
+ * 
+ * @param {string} searchString the string to search
+ */
 const search = (searchString) => {
     students = data.filter(
         (student) =>
@@ -91,6 +103,9 @@ header.addEventListener('click', (event) => {
     
 } );
 
+/**
+ * Key up event listener for the searchBar
+ */
 header.addEventListener('keyup', (event) => {
     if (event.target.tagName == "INPUT") {
       search(event.target.value);

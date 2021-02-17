@@ -10,4 +10,4 @@
 - [x] Add a Search Component
 - [x] Add Functionality to the Search Component
 - [x] Add Pagination for Search Results
-- [ ] Handle No Search Matches
+- [x] Handle No Search Matches

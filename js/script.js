@@ -17,14 +17,20 @@ let students = data; // data from the data.js file
  */
 const showPage = (page) => {
     const studentList = document.querySelector(".student-list");
+    studentList.innerHTML = "";
     addPagination(page); // run add pagination for the correct number of page buttons
 
+    if (students.length < 1) {
+        // if student array is empty
+        studentList.appendChild(noResultsBlock());
+        return;
+    }
+
     const slicedStudents = calculateStudentChunk(page);
-    studentList.innerHTML = "";
     for (let i = 0; i < slicedStudents.length; i++) {
         studentList.appendChild(studentBlock(slicedStudents[i]));
     }
-}
+};
 
 /**
  * Calculate number of pages and render buttons to the dom
@@ -32,13 +38,13 @@ const showPage = (page) => {
  * @param {number} page the current page number
  */
 const addPagination = (page) => {
-  const numberOfPages = Math.ceil(students.length / itemsPerPage);
+    const numberOfPages = Math.ceil(students.length / itemsPerPage);
 
-  linkList.innerHTML = "";
+    linkList.innerHTML = "";
 
-  for (let i = 1; i <= numberOfPages; i++) {
-    linkList.appendChild(paginationBlock(i, page));
-  }
+    for (let i = 1; i <= numberOfPages; i++) {
+        linkList.appendChild(paginationBlock(i, page));
+    }
 };
 
 /**

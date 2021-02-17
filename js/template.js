@@ -56,7 +56,7 @@ const paginationBlock = (number, page) => {
 }
 
 /**
- * Create the HTML for th searchBar
+ * Create the HTML for the searchBar
  * 
  * @returns {HTMLElement} The searchbar block
  */
@@ -72,6 +72,14 @@ const searchBarBlock = () => {
         searchField,
         searchButton,
     ]);
+}
+/**
+ * Create the HTML for no results
+ * 
+ * @returns {HTMLElement}
+ */
+const noResultsBlock = () => {
+    return createElement("li", { className: "no-results", textContent: "No results was found" });
 }
 
 /**

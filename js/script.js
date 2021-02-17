@@ -4,6 +4,10 @@ FSJS Project 2 - Data Pagination and Filtering
 */
 const itemsPerPage = 9;
 
+/**
+ * Loop the students array and append the students items to the dom
+ * @param {array} students Students objects
+ */
 const showPage = (students) => {
     const studentList = document.querySelector(".student-list");
     studentList.innerHTML = "";
@@ -12,26 +16,32 @@ const showPage = (students) => {
     }
 }
 
+/**
+ * Calculate number of pages and render buttons to the dom
+ * 
+ * @param {number} page the current page number
+ */
+const addPagination = (page) => {
+  const numberOfPages = Math.ceil(data.length / itemsPerPage);
+
+  linkList.innerHTML = "";
+
+  for (let i = 1; i <= numberOfPages; i++) {
+    linkList.appendChild(paginationBlock(i, page));
+  }
+};
+
 const calculateStudentChunk = (page) => {
     const start = (page * itemsPerPage) - itemsPerPage;
     const end = page * itemsPerPage;
     return data.slice(start, end);
 }
 
-const addPagination = (page) => {
-    const numberOfPages = Math.ceil(data.length / itemsPerPage);
-
-    linkList.innerHTML = '';
-    
-    for (let i = 1; i <= numberOfPages; i++) {
-      linkList.appendChild(paginationBlock(i, page));
-    }
-}
-
 /**
  * Get the link list
  */
 const linkList = document.querySelector(".link-list");
+
 /**
  * Event listener for pagination buttons
  */
@@ -49,14 +59,17 @@ linkList.addEventListener("click", (event) => {
  */
 const header = document.querySelector(".header")
 
+/**
+ * Event listener for the searchBar
+ */
+header.addEventListener('click', (event) => search(event) )
 
 /**
  * Run rendering functions after DOM has loaded
  */
 window.addEventListener("DOMContentLoaded", () => {
-   showPage(calculateStudentChunk(1)); //start on page one when the page loads
-   addPagination(1);
+    showPage(calculateStudentChunk(1)); //start on page one when the page loads
+    addPagination(1);
 
-   
     header.appendChild(searchBarBlock());
 });

@@ -85,7 +85,7 @@ const noResultsBlock = () => {
 /**
  * Creating the DOM element with different props
  * @param {string} elementName The HTML element name
- * @param {array} prop prop object {name: property name, value: property value}
+ * @param {Object} props Object of element attributes key value pair
  * 
  * @returns {HTMLElement}
  */
@@ -102,7 +102,7 @@ const createElement =  (elementName, props = []) => {
 /**
  * Creating the parent element, with classes
  * @param {string} elementName The HTML element name
- * @param {string} className The CSS class name 
+ * @param {Object} props Object of element attributes key value pair 
  * @param {HTMLElement[]} children An array with children HTML elements
  */
 const wrapper = (elementName, props, children = []) => {
